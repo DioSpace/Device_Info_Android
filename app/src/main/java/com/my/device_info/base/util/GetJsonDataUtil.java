@@ -1,4 +1,4 @@
-package com.my.basedemo1.util;
+package com.my.device_info.base.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;

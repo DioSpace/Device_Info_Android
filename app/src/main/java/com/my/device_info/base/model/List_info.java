@@ -1,7 +1,7 @@
 /**
  * Copyright 2020 bejson.com
  */
-package com.my.basedemo1.model;
+package com.my.device_info.base.model;
 
 /**
  * Auto-generated: 2020-10-16 2:45:13

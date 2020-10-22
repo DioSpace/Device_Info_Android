@@ -1,9 +1,10 @@
-package com.my.basedemo1;
+package com.my.device_info.work;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -15,9 +16,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.my.basedemo1.model.JsonRootBean;
-import com.my.basedemo1.model.List_info;
-import com.my.basedemo1.util.GetJsonDataUtil;
+import com.my.device_info.base.model.JsonRootBean;
+import com.my.device_info.base.model.List_info;
+import com.my.device_info.base.util.GetJsonDataUtil;
+import com.my.device_info_android.R;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -78,16 +80,19 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                show_board.setText("");
                 System.out.println("position : " + position + " id : " + id);
                 List<List_info> list_info = jsonRootBean.getList_info();
                 List_info info = list_info.get(position - 1);
-                show_board.setText(info.getFunc_name());
                 //获取Class对象
                 try {
-                    Class c = Class.forName("com.my.basedemo1.Handle");
+                    Class c = Class.forName("com.my.device_info.work.Handle");
                     Object obj = c.newInstance();
-                    Method method = c.getMethod(info.getFunc_name(), null);
-                    method.invoke(obj);
+                    Method method = c.getMethod(info.getFunc_name(), Activity.class);
+                    Object result = method.invoke(obj, MainActivity.this);
+                    if (result != null) {
+                        show_board.setText(result.toString());
+                    }
                 } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
                     e.printStackTrace();
                 }

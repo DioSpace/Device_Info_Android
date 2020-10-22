@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.my.basedemo1">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.my.device_info_android">
 
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.my.device_info.work.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,4 +20,14 @@
         </activity>
     </application>
 
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:ignore="ManifestOrder" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission
+        android:name="android.permission.LOCAL_MAC_ADDRESS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
 </manifest>

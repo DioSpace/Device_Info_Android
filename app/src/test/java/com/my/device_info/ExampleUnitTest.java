@@ -1,4 +1,4 @@
-package com.my.basedemo1;
+package com.my.device_info;
 
 import org.junit.Test;
 
