@@ -19,7 +19,6 @@ public class Handle {
         //Android 10 以后已经没有imei和meid了，取而代之的是Android Id
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             Toast.makeText(activity, "Android 10 后使用AndroidID", Toast.LENGTH_SHORT).show();
-            return null;
         }
         //检查是否有读取识别码的权限
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_PHONE_STATE) != PERMISSION_GRANTED) {
